@@ -7,12 +7,26 @@ on:
       - update-openapi
 
 jobs:
-  example_job:
+  update-icon:
     runs-on: ubuntu-latest
-
-    env:
-      ENV_VARIABLE: ${{ secrets.MY_SECRET }}
-
     steps:
-      - name: Print Secret
-        run: echo $ENV_VARIABLE
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 18.16.0
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "update openapi"
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          branch: feature/update-openapi
+          branch-suffix: timestamp
+          delete-branch: true
+          title: "OpenAPI のアップデート"
+          body: updated openapi
