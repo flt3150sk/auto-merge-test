@@ -19,7 +19,7 @@ jobs:
           node-version: 18.16.0
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v3
         with:
           commit-message: update openapi
           committer: GitHub <noreply@github.com>
@@ -28,4 +28,14 @@ jobs:
           branch-suffix: timestamp
           title: "OpenAPI のアップデート"
           body: updated openapi
-          draft: false
+
+      - name: Run CI Tests
+        run: npm run test
+
+      - name: Merge Pull Request
+        if: steps.create_pr.outputs.pull-request-number != '' && success()
+        uses: peter-evans/merge-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull_number: ${{ steps.create_pr.outputs.pull-request-number }}
+          merge_method: merge
