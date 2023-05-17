@@ -19,14 +19,13 @@ jobs:
           node-version: 18.16.0
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "update openapi"
+          commit-message: update openapi
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           branch: feature/update-openapi
           branch-suffix: timestamp
-          draft: false
           title: "OpenAPI のアップデート"
           body: updated openapi
+          draft: false
