@@ -27,8 +27,6 @@ jobs:
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           base: main
           branch: "update-openapi"
-          branch-suffix: timestamp
-          delete-branch: true
           title: "OpenAPI のアップデート"
           body: updated openapi
 
