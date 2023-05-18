@@ -3,7 +3,7 @@ name: Update OpenAPI
 on:
   push:
     branches:
-      - update-openapi
+      - ga/update-openapi
 
 jobs:
   update-icon:
@@ -27,9 +27,9 @@ jobs:
             -H "Authorization: Bearer $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             -d '{
-              "title": "Automatic PR from update-openapi",
-              "body": "This PR is automatically generated when changes are pushed to update-openapi",
-              "head": "update-openapi",
+              "title": "Automatic PR from ga/update-openapi",
+              "body": "This PR is automatically generated when changes are pushed to ga/update-openapi",
+              "head": "ga/update-openapi",
               "base": "main"
             }' \
             "https://api.github.com/repos/$GITHUB_REPOSITORY/pulls"
