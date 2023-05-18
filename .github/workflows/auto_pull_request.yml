@@ -1,9 +1,9 @@
 name: Update OpenAPI
 
 on:
-  push:
-    branches:
-      - feature/update-openapi
+  repository_dispatch:
+    types:
+      - update-openapi
 
 jobs:
   update-icon:
