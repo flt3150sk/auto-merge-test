@@ -26,6 +26,5 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           branch: feature/update-openapi
-          branch-suffix: timestamp
           title: "OpenAPI のアップデート"
           body: updated openapi
