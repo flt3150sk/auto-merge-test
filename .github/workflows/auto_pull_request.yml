@@ -3,7 +3,7 @@ name: Update OpenAPI
 on:
   push:
     branches:
-      - main
+      - feature/update-openapi
 
 jobs:
   update-icon:
