@@ -23,3 +23,11 @@ jobs:
 
     - name: Run Jest tests
       run: npm test
+
+    - name: Auto Merge PR
+      if: github.head_ref == 'ga/update-openapi'
+      run: |
+        gh auth login --with-token <<< "${{ secrets.REPO_ACCESS_TOKEN }}"
+        gh pr merge ${{ github.event.pull_request.number }} --auto --merge
+      env:
+        GH_CLI_FORCE_COLOR: 1
