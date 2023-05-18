@@ -3,7 +3,7 @@ name: Update OpenAPI
 on:
   push:
     branches:
-      - main
+      - feature/update-openapi
 
 jobs:
   update-icon:
@@ -25,7 +25,8 @@ jobs:
           commit-message: update openapi
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          branch: feature/update-openapi
+          branch: "feature/update-openapi"
+          base: "main"
           title: "OpenAPI のアップデート"
           body: updated openapi
 
