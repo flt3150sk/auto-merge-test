@@ -14,6 +14,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
+
       - uses: actions/setup-node@v2
         with:
           node-version: 18.16.0
@@ -28,14 +29,3 @@ jobs:
           branch-suffix: timestamp
           title: "OpenAPI のアップデート"
           body: updated openapi
-
-      - name: Run CI Tests
-        run: npm run test
-
-      - name: Merge Pull Request
-        if: steps.create_pr.outputs.pull-request-number != '' && success()
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          pull_number: ${{ steps.create_pr.outputs.pull-request-number }}
-          merge_method: merge
