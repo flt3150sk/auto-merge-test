@@ -26,6 +26,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           branch: feature/update-openapi
+          delete-branch: true
           title: "OpenAPI のアップデート"
           body: updated openapi
 
