@@ -1,10 +1,9 @@
 name: Update OpenAPI
 
 on:
-  workflow_dispatch:
-  repository_dispatch:
-    types:
-      - update-openapi
+  push:
+    branches:
+      - main
 
 jobs:
   update-icon:
