@@ -25,8 +25,9 @@ jobs:
           commit-message: update openapi
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          branch: "main"
-          base: "update-openapi"
+          branch: "update-openapi"
+          branch-suffix: timestamp
+          delete-branch: true
           title: "OpenAPI のアップデート"
           body: updated openapi
 
