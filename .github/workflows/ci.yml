@@ -25,7 +25,7 @@ jobs:
       run: npm test
 
     - name: Approve PR
-      if: github.head_ref == 'your-specific-branch'
+      if: github.head_ref == 'ga/update-openapi'
       run: |
         gh auth login --with-token <<< "${{ secrets.REPO_ACCESS_TOKEN }}"
         gh pr review ${{ github.event.pull_request.number }} --approve
