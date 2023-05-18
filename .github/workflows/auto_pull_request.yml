@@ -19,15 +19,19 @@ jobs:
           node-version: 18.16.0
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: update openapi
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          branch: main
-          title: "OpenAPI のアップデート"
-          body: updated openapi
-          draft: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl \
+            -X POST \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            -d '{
+              "title": "Automatic PR from update-openapi",
+              "body": "This PR is automatically generated when changes are pushed to update-openapi",
+              "head": "update-openapi",
+              "base": "main"
+            }' \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/pulls"
 
 
